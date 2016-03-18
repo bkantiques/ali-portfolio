@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	function Category(category) {	
-		
+
 		var thisCategory = this;
 
 		this.title = new ko.observable(category.title);
@@ -26,6 +26,11 @@ $(document).ready(function() {
 			thisCategory.images.push(new PortfolioImage(image));
 		});
 
+		// Category id
+		this.id = new ko.computed(function() {
+			return this.title().toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ /g, '-');
+		}, this);
+
 	}
 
 	// Parent class of image and video classes
@@ -33,7 +38,8 @@ $(document).ready(function() {
 		this.title = new ko.observable(item.title);
 		this.thumbnail = new ko.observable(item.thumbnail);
 
-		this.link = new ko.computed(function() {
+		// Item id
+		this.id = new ko.computed(function() {
 			return this.title().toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ /g, '-');
 		}, this);
 
@@ -69,21 +75,72 @@ $(document).ready(function() {
 		}
 	];
 
-	function ViewModel(items) {
+	function ViewModel(categories) {
 		
 		var self = this;
 
-		self.portfolioItems = new ko.observableArray();
+		self.categories = new ko.observableArray();
+
+		// User can choose a category and optional child subcategory
+		self.selectedCategory = new ko.observable();
+		self.selectedSubcategory = new ko.observable();
 		self.selectedPortfolioItem = new ko.observable();
-		
-		self.initialize = function(items) {
-			// Add portfolio items to observable array
-			items.forEach(function(item) {
-				self.portfolioItems.push(new PortfolioItem(item));
+
+		self.clearSelections = function() {
+			self.selectedPortfolioItem(null);
+			self.selectedSubcategory(null);
+			self.selectedCategory(null);
+		};
+
+		self.initialize = function(categories) {
+			// Add categories to observable array
+			categories.forEach(function(category) {
+				self.categories.push(new Category(category));
 			});
 		};
 
-		self.setSelectedPortfolioItem = function(item) {
+
+		self.searchSubcategoriesById = function(category, id) {
+			var categoryFound = false;
+			var categoryId = category.id();
+			var subcategories = category.subcaegories();
+
+			/*
+			If id matches this category, set as selected category 
+			and return true
+			*/
+			if(categoryId === id) {
+				self.selectedCategory(category);
+				categoryFound = true;
+			}
+			// Else search subcategories
+			else {
+				for(var i = 0; i < subcategories.length && !categoryFound; i++) {
+					categoryFound = self.searchSubcategoriesById(subcategories[i]);
+				}
+			}
+
+			return categoryFound;
+		}
+
+		self.setCategoryById = function(id) {
+
+			// If category is already selected, return true
+			if(self.selectedCategory() && self.selectedCategory().id() &&  self.selectedCategory().id() === id) {
+				return true;
+			}
+			
+			var categoryFound = false;
+			var categories = self.categories();
+
+			// Go through base categories searching each branch 
+			for(var i = 0; i < categories.length && !categoryFound; i++) {
+				categoryFound = self.searchSubcategoriesById(self.catetegories[i]);
+			}
+
+		};
+
+		self.setSelectedPortfolioById = function(id) {
 
 			// If item not already selected
 			if(!(self.selectedPortfolioItem() === item)) {
