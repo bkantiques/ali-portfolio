@@ -1,31 +1,42 @@
 $(document).ready(function() {
 
-	function Category(category) {		
+	function Category(category) {	
+		
+		var thisCategory = this;
+
 		this.title = new ko.observable(category.title);
-		this.thumbnail = new ko.observable(item.thumbnail);
+		this.thumbnail = new ko.observable(category.thumbnail);
+
+		this.subcategories = new ko.observableArray();
+		this.videos = new ko.observableArray();
+		this.images = new ko.observableArray();
+
+		// Set up subcategories
+		category.subcategories.forEach(function(subcategory) {
+			thisCategory.subcategories.push(new Category(subcategory));
+		});
+
+		// Set up videos
+		category.videos.forEach(function(video) {
+			thisCategory.videos.push(new PortfolioVideo(video));
+		});
+	
+		// Set up images
+		category.images.forEach(function(image) {
+			thisCategory.images.push(new PortfolioImage(image));
+		});
+
 	}
 
+	// Parent class of image and video classes
 	function PortfolioItem(item) {
 		this.title = new ko.observable(item.title);
-		this.type = new ko.observable(item.type);
 		this.thumbnail = new ko.observable(item.thumbnail);
-
-		// If img, set imgSrc
-		if(item.imgSrc) {
-			this.imgSrc = new ko.observable(item.imgSrc);
-		}
-		// Else if video, set youtube id
-		else if(item.youtubeId) {
-			this.youtubeId = new ko.observable(item.youtubeId);
-		}
 
 		this.link = new ko.computed(function() {
 			return this.title().toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ /g, '-');
 		}, this);
 
-		this.isVideo = new ko.computed(function() {
-			return this.type() === 'video';
-		}, this);
 	}
 
 	function PortfolioImage(item) {
