@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Alison Reed Portfolio</title>
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+<iframe id="player1" type="text/html" width="640" height="390"
+  src="http://www.youtube.com/embed/yzUOu-gYhAg?enablejsapi=1"
+  frameborder="0"></iframe>
+
+	<div id="player"></div>
+
+	<div data-bind="with: selectedPortfolioItem">
+		<div data-bind="visible: !isVideo()">
+			<img data-bind="attr: {src: src}">
+		</div>
+
+		
+		<div data-bind="text: title"></div>
+	</div>
+
+	<div data-bind="foreach: portfolioItems">
+		<a data-bind="attr: {href: '#' + link()}">
+			<div style="display: inline-block">
+				<img data-bind="attr: {src: thumbnail}">
+			
+				<div data-bind="text: title"></div>
+			</div>
+		</a>
+	</div>
+
+
+
+	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<!--script src="js/youtube.js"></script-->
+	<script src="js/sammy.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>
