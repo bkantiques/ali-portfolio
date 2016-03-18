@@ -55,6 +55,7 @@ $(document).ready(function() {
 		this.youtubeId = new ko.observable(item.youtubeId);	
 	}
 
+	// Data
 	var a = [{
 		title: 'Blah blah *&(&( HIiii',
 		type: 'image',
@@ -83,8 +84,12 @@ $(document).ready(function() {
 
 		// User can choose a category and optional child subcategory
 		self.selectedCategory = new ko.observable();
-		self.selectedSubcategory = new ko.observable();
 		self.selectedPortfolioItem = new ko.observable();
+
+		// Views
+		self.selectedCategoryBoolean = new ko.computed(function() {
+			return Boolean(self.selectedCategory());
+		}, this);
 
 		self.clearSelections = function() {
 			self.selectedPortfolioItem(null);
@@ -99,7 +104,7 @@ $(document).ready(function() {
 			});
 		};
 
-
+		// Used for tree search of categories
 		self.searchSubcategoriesById = function(category, id) {
 			var categoryFound = false;
 			var categoryId = category.id();
@@ -121,8 +126,9 @@ $(document).ready(function() {
 			}
 
 			return categoryFound;
-		}
+		};
 
+		// Search for category by id
 		self.setCategoryById = function(id) {
 
 			// If category is already selected, return true
@@ -140,74 +146,90 @@ $(document).ready(function() {
 
 		};
 
-		self.setSelectedPortfolioById = function(id) {
+		self.setItemInSelectedCategoryById = function(id) {
+			var category = self.selectedCategory();
+			var videos = category.videos();
+			var images = category.images();
 
-			// If item not already selected
-			if(!(self.selectedPortfolioItem() === item)) {
+			var itemFound = false;
 
-				if(self.selectedPortfolioItem() && self.selectedPortfolioItem().isVideo())
-					player.pauseVideo();
+			// Search videos
+			for(var i = 0; i < videos.length && !itemFound; i++) {
+				var video = videos[i];
 
-				self.selectedPortfolioItem(item);
-
-				if(item.isVideo()) {
-					// Show youtube video
-					self.getVideo();
+				// If id matches, set portfolio item and set found to true
+				if(video.id() === id) {
+					self.selectedPortfolioItem(video);
+					itemFound = true;
 				}
-				else {
-					$player.hide();
+			}
+
+			// Search images
+			for(var i = 0; i < images.length && !itemFound; i++) {
+				var image = images[i];
+
+				// If id matches, set portfolio item and set found to true
+				if(image.id() === id) {
+					self.selectedPortfolioItem(image);
+					itemFound = true;
 				}
-
 			}
+
+			return itemFound;
+
 		};
-
-		self.getVideo =function() { 
-			if(player) {
-				player.cueVideoById(self.selectedPortfolioItem().src());
-
-				$player.show();
-			}
-			else {
-				player = new YT.Player('player', {
-			        height: '390',
-			        width: '640',
-			        videoId: self.selectedPortfolioItem().src()			    
-			    });
-			}
-		    
-		};
-
-		/*self.removeVideoPlayer = function() {
-			$('#player').replaceWith('<div id="player"></div>');
-			player = null;
-		};*/
 
 
 		// Router
 	    Sammy(function() {
-		    this.get('#:titleLink', function() {
 
-		    	// Find portfolio item where link matches title link
-		    	var titleLink = this.params.titleLink.toLowerCase();
+	    	// Just category link
+		    this.get('#:categoryId', function() {
 
-		    	var itemFound = false;
-		    	var portfolioItems = self.portfolioItems();
+			    var categoryId = this.params.categoryId.toLowerCase();
 
-		    	// Go through portfolio items
-		    	for(var i = 0; i < portfolioItems.length && !itemFound; i++) {
+		    	// If not the current category
+		    	if(!(self.selectedCategory() && self.selectedCategory().id() && self.selectedCategory().id() == categoryId)) {
+		    		// Clear selections
+		    		self.clearSelections();
 
-		    		var portfolioItem = portfolioItems[i];
-
-		    		// If item link matches title link
-		    		if(portfolioItem.link() === titleLink) {
-		    			itemFound = true;
-
-		    			self.setSelectedPortfolioItem(portfolioItem);
-		    		}
-
+		    		// Find portfolio item where link matches title link
+			    	self.setCategoryById(categoryId);
+		    	}
+		    	else {
+		    		// If current category, clear selected portfolio item
+		    		self.selectedPortfolioItem(null);
 		    	}
 
 		    });
+
+		    // Category and item link
+		    this.get('#:categoryId/:itemId', function() {
+
+			    var categoryId = this.params.categoryId.toLowerCase();
+			    var itemId = this.params.itemId.toLowerCase()
+
+		    	// If not the current category
+		    	if(!(self.selectedCategory() && self.selectedCategory().id() && self.selectedCategory().id() == categoryId)) {
+		    		// Clear selections
+		    		self.clearSelections();
+
+		    		// Find portfolio item where link matches title link
+			    	var categoryFound = self.setCategoryById(categoryId);
+
+			    	if(categoryFound) {
+			    		self.setItemInSelectedCategoryById(itemId);
+			    	}
+		    	}
+		    	else if(!(self.selectedItem() && self.selectedItem().id() && self.selectedItem().id() === itemId)) {
+		    		// If current category but not current item, clear selected portfolio item
+		    		self.selectedPortfolioItem(null);
+
+		    		self.setItemInSelectedCategoryById(itemId);
+		    	}
+
+		    });
+		    
 	    }).run();
 
 	    self.initialize(items);
