@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 	// Parent class of image and video classes
 	function PortfolioItem(item) {
-		this.title = new ko.observable(item.title);\
+		this.title = new ko.observable(item.title);
 
 		// Item id
 		this.id = new ko.computed(function() {
@@ -84,7 +84,7 @@ $(document).ready(function() {
 					title: 'Moose'
 				},
 				{
-					title: 'Ostritch'
+					title: 'Ostrich'
 				},
 				{
 					title: 'Sever'
@@ -232,7 +232,7 @@ $(document).ready(function() {
 				title: 'Animation Sets',
 				thumbnail: 'sets/animation-sets/dies-ovi-palace.jpg',
 				parentLink: 'sets',
-				path: 'animation-sets',
+				path: 'sets/animation-sets',
 				images: [
 					{
 						title: 'Dies Ovi Palace'
@@ -244,14 +244,14 @@ $(document).ready(function() {
 		},
 		{
 			title: 'Illustration',
-			thumbnail: 'illustration/cards/strawberry-thieves-1.jpg',
+			thumbnail: 'illustration/cards/strawberry-thieves/strawberry-thieves-1.jpg',
 			parentLink: '',
 			path: 'illustration',
 			images: [],
 			videos: [],
 			subcategories: [{
 				title: 'Cards',
-				thumbnail: 'illustration/cards/strawberry-thieves-1.jpg',
+				thumbnail: 'illustration/cards/strawberry-thieves/strawberry-thieves-1.jpg',
 				parentLink: 'illustration',
 				path: 'illustration/cards',
 				images: [],
@@ -259,7 +259,7 @@ $(document).ready(function() {
 				subcategories: [
 					{
 						title: 'Strawberry Thieves',
-						thumbnail: 'illustration/cards/strawberry-thieves-1.jpg',
+						thumbnail: 'illustration/cards/strawberry-thieves/strawberry-thieves-1.jpg',
 						parentLink: 'illustration/cards',
 						path: 'illustration/cards/strawberry-thieves',
 						images: [
@@ -357,7 +357,7 @@ $(document).ready(function() {
 					},
 					{
 						title: 'Birthday',
-						thumbnail: 'illustration/cards/birthday/hannah.jpg'
+						thumbnail: 'illustration/cards/birthday/hannah.jpg',
 						parentLink: 'illustration/cards',
 						path: 'illustration/cards/birthday',
 						images: [
@@ -403,7 +403,7 @@ $(document).ready(function() {
 			title: 'Miscellaneous',
 			thumbnail: 'miscellaneous/quilt.jpg',
 			parentLink: '',
-			path: '',
+			path: 'miscellaneous',
 			images: [
 				{
 					title: 'Quilt'
@@ -513,6 +513,11 @@ $(document).ready(function() {
 				}
 			}
 
+			// If found item, scroll to top
+			if(itemFound) {
+				$('body').scrollTop(0);
+			}
+
 			return itemFound;
 
 		};
@@ -520,6 +525,11 @@ $(document).ready(function() {
 
 		// Router
 	    Sammy(function() {
+
+	    	this.get('#/', function() {
+
+	    		self.clearSelections();
+	    	});
 
 	    	// Just category link
 		    this.get('#:categoryId', function() {
@@ -568,7 +578,7 @@ $(document).ready(function() {
 
 		    });
 
-	    }).run();
+	    }).run('#/');
 
 	    self.initialize(categories);
 
