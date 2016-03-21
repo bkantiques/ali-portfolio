@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-	function Category(category) {	
+	function Category(category) {
 
 		var thisCategory = this;
 
 		this.title = new ko.observable(category.title);
 		this.thumbnail = new ko.observable(category.thumbnail);
-		
+
 		this.parentLink = new ko.observable(category.parentLink);
 		this.path = new ko.observable(category.path);
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
 		category.videos.forEach(function(video) {
 			thisCategory.videos.push(new PortfolioVideo(video));
 		});
-	
+
 		// Set up images
 		category.images.forEach(function(image) {
 			thisCategory.images.push(new PortfolioImage(image));
@@ -54,7 +54,7 @@ $(document).ready(function() {
 
 	function PortfolioVideo(item) {
 		var video = new PortfolioItem(item);
-		video.youtubeId = new ko.observable(item.youtubeId);	
+		video.youtubeId = new ko.observable(item.youtubeId);
 		return video;
 	}
 
@@ -413,10 +413,10 @@ $(document).ready(function() {
 			subcategories: []
 		}
 
-	];	
+	];
 
 	function ViewModel(categories) {
-		
+
 		var self = this;
 
 		self.categories = new ko.observableArray();
@@ -449,7 +449,7 @@ $(document).ready(function() {
 			var subcategories = category.subcategories();
 
 			/*
-			If id matches this category, set as selected category 
+			If id matches this category, set as selected category
 			and return true
 			*/
 			if(categoryId === id) {
@@ -473,14 +473,16 @@ $(document).ready(function() {
 			if(self.selectedCategory() && self.selectedCategory().id() &&  self.selectedCategory().id() === id) {
 				return true;
 			}
-			
+
 			var categoryFound = false;
 			var categories = self.categories();
 
-			// Go through base categories searching each branch 
+			// Go through base categories searching each branch
 			for(var i = 0; i < categories.length && !categoryFound; i++) {
 				categoryFound = self.searchSubcategoriesById(categories[i], id);
 			}
+
+			return categoryFound;
 
 		};
 
@@ -522,6 +524,7 @@ $(document).ready(function() {
 
 		};
 
+		self.initialize(categories);
 
 		// Router
 	    Sammy(function() {
@@ -578,9 +581,8 @@ $(document).ready(function() {
 
 		    });
 
-	    }).run('#/');
+	    }).run(location.hash || '#/');
 
-	    self.initialize(categories);
 
 	}
 
