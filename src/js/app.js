@@ -6,6 +6,9 @@ $(document).ready(function() {
 
 		this.title = new ko.observable(category.title);
 		this.thumbnail = new ko.observable(category.thumbnail);
+		
+		this.parentLink = new ko.observable(category.parentLink);
+		this.path = new ko.observable(category.path);
 
 		this.subcategories = new ko.observableArray();
 		this.videos = new ko.observableArray();
@@ -35,8 +38,7 @@ $(document).ready(function() {
 
 	// Parent class of image and video classes
 	function PortfolioItem(item) {
-		this.title = new ko.observable(item.title);
-		this.thumbnail = new ko.observable(item.thumbnail);
+		this.title = new ko.observable(item.title);\
 
 		// Item id
 		this.id = new ko.computed(function() {
@@ -47,7 +49,6 @@ $(document).ready(function() {
 
 	function PortfolioImage(item) {
 		var image = new PortfolioItem(item);
-		image.imgSrc = new ko.observable(item.imgSrc);
 		return image;
 	}
 
