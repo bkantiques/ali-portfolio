@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Alison Reed Portfolio</title>
 
@@ -15,29 +16,69 @@
 
 <body>
 
-<iframe id="player1" type="text/html" width="640" height="390"
-  src="http://www.youtube.com/embed/yzUOu-gYhAg?enablejsapi=1"
-  frameborder="0"></iframe>
+	<!-- Parent Category link -->
+	<div data-bind="with: selectedCategory">
 
-	<div id="player"></div>
-
-	<div data-bind="with: selectedPortfolioItem">
-		<div data-bind="visible: !isVideo()">
-			<img data-bind="attr: {src: src}">
+		<div>
+			<!-- Link to parent category, or if a base category, link to #/ route (home) --> 
+			<a data-bind="attr: {href: '#' + (parentLink() || '/')}">< Back</a>
 		</div>
 
-		
+	</div>
+
+	<!-- Selected item --> 
+	<div style="text-align: center" data-bind="with: selectedPortfolioItem">
+		<div>
+			<img data-bind="attr: {src: 'images/' + $parent.selectedCategory().path() + '/' + id() + '.jpg' }"></img>
+		</div>
 		<div data-bind="text: title"></div>
 	</div>
 
-	<div data-bind="foreach: portfolioItems">
-		<a data-bind="attr: {href: '#' + link()}">
-			<div style="display: inline-block">
-				<img data-bind="attr: {src: thumbnail}">
-			
+	<!-- Base Category menu -->
+	<div data-bind="visible: !selectedCategoryBoolean(), foreach: categories">
+		<a data-bind="attr: {href: '#' + id()}">
+			<div>
+				<div>
+					<img data-bind="attr: {src: 'images/' + thumbnail()}"></img>
+				</div>
 				<div data-bind="text: title"></div>
 			</div>
 		</a>
+	</div>
+
+	<!-- Selected category view -->
+	<div data-bind="with: selectedCategory">
+
+		<h1 data-bind="text: title"></h1>
+
+		<!-- Subcategories -->
+		<div data-bind="foreach: subcategories">
+			<a data-bind="attr: {href: '#' + id()}">
+				<div>
+					<div>
+						<img data-bind="attr: {src: 'images/' + thumbnail()}"></img>
+					</div>
+					<div data-bind="text: 'Subcategory: ' + title()"></div>
+				</div>
+			</a>
+		</div>
+
+		<!-- Videos -->
+		<div data-bind="foreach: videos">
+			<a data-bind="attr: {href: '#' + $parent.id() + '/' + id()}">
+				<div data-bind="text: title"></div>
+			</a>
+		</div>
+
+		<!-- Images -->
+		<div data-bind="foreach: images">
+			<a data-bind="attr: {href: '#' + $parent.id() + '/' + id()}">
+				<div>
+					<img data-bind="attr: {src: 'images/' + $parent.path() + '/' + id() + '.jpg'}"></img>
+				</div>
+				<div data-bind="text: title"></div>
+			</a>
+		</div>
 	</div>
 
 
