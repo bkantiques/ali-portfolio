@@ -61,6 +61,18 @@ var categories = [
 			},
 			{
 				title: 'Detail of Mom Dad'
+			},
+			{
+				title: 'Fluorite'
+			},
+			{
+				title: 'Leaf'
+			},
+			{
+				title: 'Minerals'
+			},
+			{
+				title: 'Ram Skeleton'
 			}
 		],
 		videos: [],
@@ -160,10 +172,14 @@ var categories = [
 		},
 		{
 			title: 'Exist',
-			thumbnail: 'sets/exist/',
+			thumbnail: 'sets/exist/exist-1.jpg',
 			parentLink: 'sets',
 			path: 'sets/exist',
-			images: [],
+			images: [
+				{
+					title: 'Exist 1'
+				}
+			],
 			videos: [],
 			subcategories: []
 		},
@@ -191,6 +207,9 @@ var categories = [
 			images: [
 				{
 					title: 'Dies Ovi Palace'
+				},
+				{
+					title: 'Concept Sketch Eggscape'
 				}
 			],
 			videos: [],
@@ -356,15 +375,113 @@ var categories = [
 	},
 	{
 		title: 'Miscellaneous',
-		thumbnail: 'miscellaneous/quilt.jpg',
+		thumbnail: 'miscellaneous/silversmithing-and-enamel/silver-flowers-2.jpg',
 		parentLink: '',
 		path: 'miscellaneous',
-		images: [
-			{
-				title: 'Quilt'
-			}
-		],
+		images: [],
 		videos: [],
-		subcategories: []
+		subcategories: [
+			{
+				title: 'Models',
+				thumbnail: 'miscellaneous/models/9th-grade-elizabethan-model-1.jpg',
+				parentLink: 'miscellaneous',
+				path: 'miscellaneous/models',
+				images: [
+					{
+						title: '9th Grade Elizabethan Model 1'
+					},
+					{
+						title: '9th Grade Elizabethan Model 2'
+					},
+					{
+						title: 'Moishe in Progress 1'
+					},
+					{
+						title: 'Moishe in Progress 2'
+					},
+					{
+						title: 'Moishe with Clothes'
+					},
+					{
+						title: 'Moishe with Vest'
+					}
+				],
+				videos: [],
+				subcategories: []
+			},
+			{
+				title: 'Silversmithing and Enamel',
+				thumbnail: 'miscellaneous/silversmithing-and-enamel/silver-flowers-1.jpg',
+				parentLink: 'miscellaneous',
+				path: 'miscellaneous/silversmithing-and-enamel',
+				images: [
+					{
+						title: 'Silver Flowers 1'
+					},
+					{
+						title: 'Silver Flowers 2'
+					},
+					{
+						title: 'Flower Pendant'
+					},
+					{
+						title: 'Enamel Pendants'
+					}
+				],
+				videos: [],
+				subcategories: []
+			},
+			{
+				title: 'Woodworking',
+				thumbnail: 'miscellaneous/woodworking/chair-1.jpg',
+				parentLink: 'miscellaneous',
+				path: 'miscellaneous/woodworking',
+				images: [
+					{
+						title: 'Chair 1'
+					},
+					{
+						title: 'Chair 2'
+					},
+					{
+						title: 'Bread Basket'
+					}
+				],
+				videos: [],
+				subcategories: []
+			},
+			{
+				title: 'Sewing and Knitting',
+				thumbnail: 'miscellaneous/sewing-and-knitting/quilt-full.jpg',
+				parentLink: 'miscellaneous',
+				path: 'miscellaneous/sewing-and-knitting',
+				images: [
+					{
+						title: 'Quilt Full'
+					},
+					{
+						title: 'Quilt Detail'
+					},
+					{
+						title: 'Knitted Blanket'
+					}
+				],
+				videos: [],
+				subcategories: []
+			},
+			{
+				title: 'Prints',
+				thumbnail: 'miscellaneous/prints/museum-tags-and-water-towers.jpg',
+				parentLink: 'miscellaneous',
+				path: 'miscellaneous/prints',
+				images: [
+					{
+						title: 'Museum Tags and Water Towers'
+					}
+				],
+				videos: [],
+				subcategories: []
+			},
+		]
 	}
 ];
