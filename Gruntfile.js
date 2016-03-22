@@ -84,6 +84,33 @@ module.exports = function(grunt) {
                 }]
             }
 
+        },
+
+        sass: {
+            build: {
+                files: {
+                    'src/build-css/style.css': 'src/build-css/sass/style.scss'
+                }
+            }
+        },
+
+        watch: {
+            build: {
+                files: ['src/build-css/sass/style.scss'],
+                tasks: ['sass']
+            }
+        },
+
+        browserSync: {
+            bsFiles: {
+                src: ['src/index.html', 'src/build-css/style.css', 'src/js/*.js']
+            },
+            options: {
+                server: {
+                    baseDir: './src/'
+                },
+                watchTask: true
+            }
         }
 
     });
@@ -92,5 +119,6 @@ module.exports = function(grunt) {
 
     // 4. Register tasks
     grunt.registerTask('images', ['responsive_images', 'imagemin']);
+    grunt.registerTask('watchSync', ['browserSync', 'watch']);
 
 };
