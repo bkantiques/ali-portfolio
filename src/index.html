@@ -7,7 +7,7 @@
 
 	<title>Alison Reed Portfolio</title>
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="build-css/style.css">
 
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,69 +16,74 @@
 
 <body>
 
-	<!-- Parent Category link -->
-	<div data-bind="with: selectedCategory">
+	<div class="main">
 
-		<div>
-			<!-- Link to parent category, or if a base category, link to #/ route (home) -->
-			<a data-bind="attr: {href: '#' + (parentLink() || '/')}">< Back</a>
-		</div>
+		<header>
+			<h1>Alison Reed</h1>
+		</header>
 
-	</div>
+		<!-- Category title and Parent Category link -->
+		<div data-bind="with: selectedCategory">
 
-	<!-- Selected item -->
-	<div style="text-align: center" data-bind="with: selectedPortfolioItem">
-		<div>
-			<img data-bind="attr: {src: 'images/600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg' }"></img>
-		</div>
-		<div data-bind="text: title"></div>
-	</div>
+			<h2 data-bind="text: title"></h2>
 
-	<!-- Base Category menu -->
-	<div data-bind="visible: !selectedCategoryBoolean(), foreach: categories">
-		<a data-bind="attr: {href: '#' + id()}">
 			<div>
-				<div>
-					<img data-bind="attr: {src: 'images/600/' + thumbnail()}"></img>
-				</div>
-				<div data-bind="text: title"></div>
+				<!-- Link to parent category, or if a base category, link to #/ route (home) -->
+				<a data-bind="attr: {href: '#' + (parentLink() || '/')}">< Back</a>
 			</div>
-		</a>
-	</div>
 
-	<!-- Selected category view -->
-	<div data-bind="with: selectedCategory">
+		</div>
 
-		<h1 data-bind="text: title"></h1>
+		<!-- Selected item -->
+		<div class="selected-item" data-bind="with: selectedPortfolioItem">
+			<div>
+				<img data-bind="attr: {src: 'images/600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg' }"></img>
+			</div>
+			<div data-bind="text: title"></div>
+		</div>
 
-		<!-- Subcategories -->
-		<div data-bind="foreach: subcategories">
-			<a data-bind="attr: {href: '#' + id()}">
+		<!-- Base Category menu -->
+		<div class="category-grid" data-bind="visible: !selectedCategoryBoolean(), foreach: categories">
+			<a class="category-grid-item" data-bind="attr: {href: '#' + id()}">
 				<div>
-					<div>
-						<img data-bind="attr: {src: 'images/600/' + thumbnail()}"></img>
+					<div class="thumbnail-container">
+						<img class="category-grid-thumbnail" data-bind="attr: {src: 'images/600/' + thumbnail()}"></img>
 					</div>
-					<div data-bind="text: 'Subcategory: ' + title()"></div>
+					<div data-bind="text: title"></div>
 				</div>
 			</a>
 		</div>
 
-		<!-- Videos -->
-		<div data-bind="foreach: videos">
-			<iframe data-bind="attr: {src: 'http://www.youtube.com/embed/' + youtubeId() }" width="420" height="315"></iframe>
-		</div>
+		<!-- Selected category view -->
+		<div data-bind="with: selectedCategory">
 
-		<!-- Images -->
-		<div data-bind="foreach: images">
-			<a data-bind="attr: {href: '#' + $parent.id() + '/' + id()}">
-				<div>
-					<img data-bind="attr: {src: 'images/600/' + $parent.path() + '/' + id() + '.jpg'}"></img>
-				</div>
-				<div data-bind="text: title"></div>
-			</a>
+			<!-- Subcategories -->
+			<div class="category-grid" data-bind="foreach: subcategories">
+				<a class="category-grid-item" data-bind="attr: {href: '#' + id()}">
+					<div>
+						<div class="thumbnail-container">
+							<img class="category-grid-thumbnail" data-bind="attr: {src: 'images/600/' + thumbnail()}"></img>
+						</div>
+						<div data-bind="text: title"></div>
+					</div>
+				</a>
+			</div>
+
+			<!-- Videos -->
+			<div data-bind="foreach: videos">
+				<iframe data-bind="attr: {src: 'http://www.youtube.com/embed/' + youtubeId() }" width="420" height="315"></iframe>
+			</div>
+
+			<!-- Images -->
+			<div class="image-grid" data-bind="foreach: images">
+				<a class="image-grid-item" data-bind="attr: {href: '#' + $parent.id() + '/' + id()}">
+					<div>
+						<img class="image-grid-thumbnail" data-bind="attr: {src: 'images/600/' + $parent.path() + '/' + id() + '.jpg'}"></img>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
-
 
 
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
