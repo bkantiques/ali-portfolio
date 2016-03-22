@@ -91,6 +91,6 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // 4. Register tasks
-    grunt.registerTask('build', []);
+    grunt.registerTask('images', ['responsive_images', 'imagemin']);
 
 };
