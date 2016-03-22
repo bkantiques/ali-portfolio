@@ -1,0 +1,10 @@
+{
+  "name": "ali-portfolio",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-responsive-images": "^0.1.7",
+    "load-grunt-tasks": "^3.4.1"
+  }
+}
