@@ -59,7 +59,22 @@ $(document).ready(function() {
 	}
 
 	// Data
-	var categories = [{
+	var categories = [
+		{
+			title: 'Animation Reel',
+			thumbnail: 'miscellaneous/quilt.jpg',
+			parentLink: '',
+			path: 'animation',
+			images: [],
+			videos: [
+				{
+					title: 'Animation Reel',
+					youtubeId: 'mvVFWN4fXDo'
+				}
+			],
+			subcategories: []
+		},
+		{
 			title: 'Drawings',
 			thumbnail: 'drawings/scissors.jpg',
 			parentLink: '',
@@ -412,7 +427,6 @@ $(document).ready(function() {
 			videos: [],
 			subcategories: []
 		}
-
 	];
 
 	function ViewModel(categories) {
