@@ -14,6 +14,8 @@ $(document).ready(function() {
 		this.videos = new ko.observableArray();
 		this.images = new ko.observableArray();
 
+		this.selectedImageIndex = new ko.observable();
+
 		// Set up subcategories
 		category.subcategories.forEach(function(subcategory) {
 			thisCategory.subcategories.push(new Category(subcategory));
@@ -73,6 +75,65 @@ $(document).ready(function() {
 		self.selectedCategoryBoolean = new ko.computed(function() {
 			return Boolean(self.selectedCategory());
 		}, this);
+
+		// Return whether selected category has an image with index lower than selected image
+		self.selectedCategoryHasPreviousImage = new ko.computed(function() {
+			var hasPreviousImage = false;
+
+			if(self.selectedCategory() && self.selectedCategory().images().length && self.selectedPortfolioItem()) {
+
+				var index = self.selectedCategory().selectedImageIndex();
+
+				hasPreviousImage = index > 0;
+			}
+
+			return hasPreviousImage;
+
+		}, this);
+
+		// Return whether selected category has an image with index higher than selected image
+		self.selectedCategoryHasNextImage = new ko.computed(function() {
+			var hasNextImage = false;
+
+			if(self.selectedCategory() && self.selectedCategory().images().length && self.selectedPortfolioItem()) {
+
+				var images = self.selectedCategory().images();
+				var index = self.selectedCategory().selectedImageIndex();
+
+				hasNextImage = index < images.length - 1;
+			}
+
+			return hasNextImage;
+
+		}, this);
+
+		// Select previous image
+		self.selectPreviousImage = function() {
+			if(self.selectedCategoryHasPreviousImage) {
+
+				var previousImageIndex = self.selectedCategory().selectedImageIndex() - 1;
+				var previousImageId = self.selectedCategory().images()[previousImageIndex].id();
+
+				var categoryId = self.selectedCategory().id();
+
+				sammy.setLocation('#' + categoryId + '/' + previousImageId);
+
+			}
+		};
+
+		// Select next image
+		self.selectNextImage = function() {
+			if(self.selectedCategoryHasNextImage) {
+
+				var nextImageIndex = self.selectedCategory().selectedImageIndex() + 1;
+				var nextImageId = self.selectedCategory().images()[nextImageIndex].id();
+
+				var categoryId = self.selectedCategory().id();
+
+				sammy.setLocation('#' + categoryId + '/' + nextImageId);
+
+			}
+		};
 
 		self.clearSelections = function() {
 			self.selectedPortfolioItem(null);
@@ -156,6 +217,8 @@ $(document).ready(function() {
 				if(image.id() === id) {
 					self.selectedPortfolioItem(image);
 					itemFound = true;
+
+					self.selectedCategory().selectedImageIndex(i);
 				}
 			}
 
@@ -171,7 +234,7 @@ $(document).ready(function() {
 		self.initialize(categories);
 
 		// Router
-	    Sammy(function() {
+	    var sammy = Sammy(function() {
 
 	    	this.get('#/', function() {
 

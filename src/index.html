@@ -36,26 +36,31 @@
 
 		<!-- Selected item -->
 		<div class="selected-item" data-bind="with: selectedPortfolioItem">
-			<div>
-				<picture>
-					<source
-						media="(min-width: 900px)"
-						data-bind="attr: {srcset: 'images/1000/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/2000/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
-					<source
-						media="(min-width: 700px)"
-						data-bind="attr: {srcset: 'images/800/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/1600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
-					<source
-						media="(min-width: 500px)"
-						data-bind="attr: {srcset: 'images/600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/1200/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
-					<source
-						media="(min-width: 300px)"
-						data-bind="attr: {srcset: 'images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/800/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
-					<source
-						data-bind="attr: {srcset: 'images/200/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
-					<img data-bind="attr: {src: 'images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg'}">
-				</picture>
+			<div class="selected-item-control">
+				<button class="selected-item-iterator" data-bind="style: { visibility: $parent.selectedCategoryHasPreviousImage() ? 'visible' : 'hidden' }, click: $parent.selectPreviousImage">&lt;</button>
+				<div class="selected-image-container">
+					<picture>
+						<source
+							media="(min-width: 900px)"
+							data-bind="attr: {srcset: 'images/1000/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/2000/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+						<source
+							media="(min-width: 700px)"
+							data-bind="attr: {srcset: 'images/800/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/1600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+						<source
+							media="(min-width: 500px)"
+							data-bind="attr: {srcset: 'images/600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/1200/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+						<source
+							media="(min-width: 300px)"
+							data-bind="attr: {srcset: 'images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/800/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+						<source
+							data-bind="attr: {srcset: 'images/200/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+						<img class="selected-image" data-bind="attr: {src: 'images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg'}">
+					</picture>
+					<div data-bind="text: title"></div>
+				</div>
+
+				<button class="selected-item-iterator" data-bind="style: { visibility: $parent.selectedCategoryHasNextImage() ? 'visible' : 'hidden' }, click: $parent.selectNextImage">&gt;</button>
 			</div>
-			<div data-bind="text: title"></div>
 		</div>
 
 		<!-- Base Category menu -->
