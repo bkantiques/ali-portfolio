@@ -37,7 +37,23 @@
 		<!-- Selected item -->
 		<div class="selected-item" data-bind="with: selectedPortfolioItem">
 			<div>
-				<img data-bind="attr: {src: 'images/600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg' }"></img>
+				<picture>
+					<source
+						media="(min-width: 900px)"
+						data-bind="attr: {srcset: 'images/1000/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/2000/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+					<source
+						media="(min-width: 700px)"
+						data-bind="attr: {srcset: 'images/800/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/1600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+					<source
+						media="(min-width: 500px)"
+						data-bind="attr: {srcset: 'images/600/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/1200/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+					<source
+						media="(min-width: 300px)"
+						data-bind="attr: {srcset: 'images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/800/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+					<source
+						data-bind="attr: {srcset: 'images/200/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 1x, images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg 2x'}">
+					<img data-bind="attr: {src: 'images/400/' + $parent.selectedCategory().path() + '/' + id() + '.jpg'}">
+				</picture>
 			</div>
 			<div data-bind="text: title"></div>
 		</div>
@@ -47,7 +63,23 @@
 			<a class="category-grid-item" data-bind="attr: {href: '#' + id()}">
 				<div>
 					<div class="thumbnail-container">
-						<img class="category-grid-thumbnail" data-bind="attr: {src: 'images/600/' + thumbnail()}"></img>
+						<picture>
+							<source
+								media="(min-width: 2600px)"
+								data-bind="attr: {srcset: 'images/1000/' + thumbnail() + ' 1x, images/2000/' + thumbnail() + ' 2x'}">
+							<source
+								media="(min-width: 1950px)"
+								data-bind="attr: {srcset: 'images/800/' + thumbnail() + ' 1x, images/1600/' + thumbnail() + ' 2x'}">
+							<source
+								media="(min-width: 1300px)"
+								data-bind="attr: {srcset: 'images/600/' + thumbnail() + ' 1x, images/1200/' + thumbnail() + ' 2x'}">
+							<source
+								media="(min-width: 650px)"
+								data-bind="attr: {srcset: 'images/400/' + thumbnail() + ' 1x, images/800/' + thumbnail() + ' 2x'}">
+							<source
+								data-bind="attr: {srcset: 'images/200/' + thumbnail() + ' 1x, images/400/' + thumbnail() + ' 2x'}">
+							<img class="category-grid-thumbnail" data-bind="attr: {src: 'images/400/' + thumbnail()}">
+						</picture>
 					</div>
 					<div data-bind="text: title"></div>
 				</div>
@@ -62,7 +94,23 @@
 				<a class="category-grid-item" data-bind="attr: {href: '#' + id()}">
 					<div>
 						<div class="thumbnail-container">
-							<img class="category-grid-thumbnail" data-bind="attr: {src: 'images/600/' + thumbnail()}"></img>
+							<picture>
+								<source
+									media="(min-width: 2600px)"
+									data-bind="attr: {srcset: 'images/1000/' + thumbnail() + ' 1x, images/2000/' + thumbnail() + ' 2x'}">
+								<source
+									media="(min-width: 1950px)"
+									data-bind="attr: {srcset: 'images/800/' + thumbnail() + ' 1x, images/1600/' + thumbnail() + ' 2x'}">
+								<source
+									media="(min-width: 1300px)"
+									data-bind="attr: {srcset: 'images/600/' + thumbnail() + ' 1x, images/1200/' + thumbnail() + ' 2x'}">
+								<source
+									media="(min-width: 650px)"
+									data-bind="attr: {srcset: 'images/400/' + thumbnail() + ' 1x, images/800/' + thumbnail() + ' 2x'}">
+								<source
+									data-bind="attr: {srcset: 'images/200/' + thumbnail() + ' 1x, images/400/' + thumbnail() + ' 2x'}">
+								<img class="category-grid-thumbnail" data-bind="attr: {src: 'images/400/' + thumbnail()}">
+							</picture>
 						</div>
 						<div data-bind="text: title"></div>
 					</div>
@@ -82,21 +130,19 @@
 					<div>
 						<picture>
 							<source
-								media="(min-width: 3000px)"
+								media="(min-width: 2600px)"
 								data-bind="attr: {srcset: 'images/1000/' + $parent.path() + '/' + id() + '.jpg 1x, images/2000/' + $parent.path() + '/' + id() + '.jpg 2x'}">
 							<source
-								media="(min-width: 2250px)"
+								media="(min-width: 1950px)"
 								data-bind="attr: {srcset: 'images/800/' + $parent.path() + '/' + id() + '.jpg 1x, images/1600/' + $parent.path() + '/' + id() + '.jpg 2x'}">
 							<source
-								media="(min-width: 1500px)"
+								media="(min-width: 1300px)"
 								data-bind="attr: {srcset: 'images/600/' + $parent.path() + '/' + id() + '.jpg 1x, images/1200/' + $parent.path() + '/' + id() + '.jpg 2x'}">
 							<source
-								media="(max-width: 749px)"
-								data-bind="attr: {srcset: 'images/200/' + $parent.path() + '/' + id() + '.jpg 1x, images/400/' + $parent.path() + '/' + id() + '.jpg 2x'}">
-							<!-- Default to downloading 400px images -->
-							<source
+								media="(min-width: 650px)"
 								data-bind="attr: {srcset: 'images/400/' + $parent.path() + '/' + id() + '.jpg 1x, images/800/' + $parent.path() + '/' + id() + '.jpg 2x'}">
-
+							<source
+								data-bind="attr: {srcset: 'images/200/' + $parent.path() + '/' + id() + '.jpg 1x, images/400/' + $parent.path() + '/' + id() + '.jpg 2x'}">
 							<img class="image-grid-thumbnail" data-bind="attr: {src: 'images/400/' + $parent.path() + '/' + id() + '.jpg'}">
 						</picture>
 					</div>
