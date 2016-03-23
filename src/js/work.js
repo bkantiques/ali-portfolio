@@ -2,9 +2,9 @@
 var categories = [
 	{
 		title: 'Animation Reel',
-		thumbnail: 'miscellaneous/quilt.jpg',
+		thumbnail: 'animation-reel/animation-reel-thumbnail.jpg',
 		parentLink: '',
-		path: 'animation',
+		path: 'animation-reel',
 		images: [],
 		videos: [
 			{
@@ -103,7 +103,7 @@ var categories = [
 	},
 	{
 		title: 'Sets',
-		thumbnail: 'sets/references/references-to-salvador-dali-make-me-hot-4.jpg',
+		thumbnail: 'sets/rakes-progress/the-rakes-progress-4.jpg',
 		parentLink: '',
 		path: 'sets',
 		images: [],
@@ -115,13 +115,13 @@ var categories = [
 			path: 'sets/references',
 			images: [
 				{
+					title: 'References to Salvador Dali Make Me Hot 3'
+				},
+				{
 					title: 'References to Salvador Dali Make Me Hot 1'
 				},
 				{
 					title: 'References to Salvador Dali Make Me Hot 2'
-				},
-				{
-					title: 'References to Salvador Dali Make Me Hot 3'
 				},
 				{
 					title: 'References to Salvador Dali Make Me Hot 4'
@@ -150,7 +150,7 @@ var categories = [
 		},
 		{
 			title: 'The Rake\'s Progress',
-			thumbnail: 'sets/rakes-progress/the-rakes-progress-1.jpg',
+			thumbnail: 'sets/rakes-progress/the-rakes-progress-4.jpg',
 			parentLink: 'sets',
 			path: 'sets/rakes-progress',
 			images: [
@@ -404,6 +404,9 @@ var categories = [
 					},
 					{
 						title: 'Moishe with Vest'
+					},
+					{
+						title: 'Moishe with Coat'
 					}
 				],
 				videos: [],
@@ -433,7 +436,7 @@ var categories = [
 			},
 			{
 				title: 'Woodworking',
-				thumbnail: 'miscellaneous/woodworking/chair-1.jpg',
+				thumbnail: 'miscellaneous/woodworking/chair-2.jpg',
 				parentLink: 'miscellaneous',
 				path: 'miscellaneous/woodworking',
 				images: [
@@ -452,7 +455,7 @@ var categories = [
 			},
 			{
 				title: 'Sewing and Knitting',
-				thumbnail: 'miscellaneous/sewing-and-knitting/quilt-full.jpg',
+				thumbnail: 'miscellaneous/sewing-and-knitting/quilt-detail.jpg',
 				parentLink: 'miscellaneous',
 				path: 'miscellaneous/sewing-and-knitting',
 				images: [
@@ -464,6 +467,15 @@ var categories = [
 					},
 					{
 						title: 'Knitted Blanket'
+					},
+					{
+						title: 'Applique Paper Piecing Stars'
+					},
+					{
+						title: 'Applique Paper Piecing 3 Squares'
+					},
+					{
+						title: 'Patchwork 9 Squares'
 					}
 				],
 				videos: [],
