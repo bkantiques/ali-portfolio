@@ -80,7 +80,25 @@
 			<div class="image-grid" data-bind="foreach: images">
 				<a class="image-grid-item" data-bind="attr: {href: '#' + $parent.id() + '/' + id()}">
 					<div>
-						<img class="image-grid-thumbnail" data-bind="attr: {src: 'images/600/' + $parent.path() + '/' + id() + '.jpg'}"></img>
+						<picture>
+							<source
+								media="(min-width: 3000px)"
+								data-bind="attr: {srcset: 'images/1000/' + $parent.path() + '/' + id() + '.jpg 1x, images/2000/' + $parent.path() + '/' + id() + '.jpg 2x'}">
+							<source
+								media="(min-width: 2250px)"
+								data-bind="attr: {srcset: 'images/800/' + $parent.path() + '/' + id() + '.jpg 1x, images/1600/' + $parent.path() + '/' + id() + '.jpg 2x'}">
+							<source
+								media="(min-width: 1500px)"
+								data-bind="attr: {srcset: 'images/600/' + $parent.path() + '/' + id() + '.jpg 1x, images/1200/' + $parent.path() + '/' + id() + '.jpg 2x'}">
+							<source
+								media="(max-width: 749px)"
+								data-bind="attr: {srcset: 'images/200/' + $parent.path() + '/' + id() + '.jpg 1x, images/400/' + $parent.path() + '/' + id() + '.jpg 2x'}">
+							<!-- Default to downloading 400px images -->
+							<source
+								data-bind="attr: {srcset: 'images/400/' + $parent.path() + '/' + id() + '.jpg 1x, images/800/' + $parent.path() + '/' + id() + '.jpg 2x'}">
+
+							<img class="image-grid-thumbnail" data-bind="attr: {src: 'images/400/' + $parent.path() + '/' + id() + '.jpg'}">
+						</picture>
 					</div>
 				</a>
 			</div>
@@ -93,6 +111,7 @@
 	<!--script src="js/youtube.js"></script-->
 	<script src="js/sammy.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+	<script src="js/picturefill.min.js"></script>
 	<script src="js/work.js"></script>
 	<script src="js/app.js"></script>
 
