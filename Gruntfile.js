@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         sass: {
             build: {
                 files: {
-                    'src/build-css/style.css': 'src/build-css/sass/style.scss'
+                    'src/build-css/sassed/style.css': 'src/build-css/sass/style.scss'
                 }
             }
         },
@@ -111,6 +111,57 @@ module.exports = function(grunt) {
                 },
                 watchTask: true
             }
+        },
+
+        concat: {
+            options: {
+                separator: '\n'
+            },
+            // Concats local css into one file to reduce requests
+            css: {
+                src: ['src/bower_components/canonical.css/canonical.min.css', 'src/build-css/style.css'],
+                dest: 'src/build-css/concat/style.css'
+            },
+            // Concats local js into one file to reduce requests
+            js: {
+                src: ['src/bower_components/jquery/dist/jquery.min.js', 'src/bower_components/sammy/lib/min/sammy-0.7.6.min.js', 'src/bower_components/knockout/dist/knockout.js', 'src/js/picturefill.min.js', 'src/js/work.js','src/js/app.js'],
+                dest: 'src/js/concat/app.js'
+            }
+        },
+
+        // Adds css prefixes
+        autoprefixer: {
+            dist: {
+                files: {
+                    'src/build-css/style.css': 'src/build-css/sassed/style.css'
+                }
+            }
+        },
+
+        cssmin: {
+            // Minifies concatenated css and pputs in dist folder
+            build: {
+                files: {
+                    'dist/css/style.min.css': 'src/build-css/concat/style.css'
+                }
+            }
+        },
+
+        uglify: {
+            // Minifies concatenated js and puts in dist folder
+            build: {
+                files: {
+                    'dist/js/app.min.js': 'src/js/concat/app.js'
+                }
+            }
+        },
+
+        processhtml: {
+            build: {
+                files: {
+                    'dist/index.html': 'src/index.html'
+                }
+            }
         }
 
     });
@@ -120,5 +171,6 @@ module.exports = function(grunt) {
     // 4. Register tasks
     grunt.registerTask('images', ['responsive_images', 'imagemin']);
     grunt.registerTask('watchSync', ['browserSync', 'watch']);
+    grunt.registerTask('build', ['sass', 'autoprefixer', 'concat', 'cssmin', 'uglify', 'processhtml']);
 
 };
