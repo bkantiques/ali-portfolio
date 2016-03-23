@@ -67,6 +67,14 @@ $(document).ready(function() {
 
 		self.categories = new ko.observableArray();
 
+
+		this.mobileMenuVisible = new ko.observable(false);
+
+		// Toggle mobile menu
+		this.toggleMobileMenu = function() {
+			this.mobileMenuVisible(!this.mobileMenuVisible());
+		};
+
 		// User can choose a category and optional child subcategory
 		self.selectedCategory = new ko.observable();
 		self.selectedPortfolioItem = new ko.observable();

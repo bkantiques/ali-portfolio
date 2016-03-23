@@ -7,6 +7,7 @@
 
 	<title>Alison Reed Portfolio</title>
 
+	<link href='https://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="build-css/style.css">
 
 	<!--[if lt IE 9]>
@@ -19,18 +20,28 @@
 	<div class="main">
 
 		<header>
-			<h1>Alison Reed</h1>
+			<a href="#/">
+				<h1>ALISON REED</h1>
+			</a>
+			<nav data-bind="foreach: categories, css: {'nav-mobile-hidden': !mobileMenuVisible() }">
+				<div>
+					<a data-bind="attr: {href: '#' + path()}, text: title"></a>
+				</div>
+			</nav>
+			<div class="menu-expander" data-bind="click: toggleMobileMenu">Menu</div>
 		</header>
 
+
+
 		<!-- Category title and Parent Category link -->
-		<div data-bind="with: selectedCategory">
+		<div class="above-selected-item" data-bind="with: selectedCategory">
 
-			<h2 data-bind="text: title"></h2>
-
-			<div>
+			<div class="back-link">
 				<!-- Link to parent category, or if a base category, link to #/ route (home) -->
 				<a data-bind="attr: {href: '#' + (parentLink() || '/')}">< Back</a>
 			</div>
+
+			<div class="category-title" data-bind="text: title"></div>
 
 		</div>
 
