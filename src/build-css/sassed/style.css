@@ -133,7 +133,7 @@ nav {
 .menu-expander {
   display: none; }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
   h1 {
     text-align: center; }
 
@@ -156,5 +156,8 @@ nav {
     position: relative;
     z-index: 10;
     background-color: white; } }
+.contact-info {
+  clear: both;
+  padding-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

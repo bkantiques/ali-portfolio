@@ -25,10 +25,14 @@
 			<a href="#/">
 				<h1>ALISON REED</h1>
 			</a>
-			<nav data-bind="foreach: categories, css: {'nav-mobile-hidden': !mobileMenuVisible() }">
+			<nav data-bind="css: {'nav-mobile-hidden': !mobileMenuVisible() }">
+				<!-- ko foreach: categories -->
 				<div>
 					<a data-bind="attr: {href: '#' + path()}, text: title"></a>
 				</div>
+				<!-- /ko -->
+				<div>
+					<a href="#contact">Contact</a>
 			</nav>
 			<div class="menu-expander" data-bind="click: toggleMobileMenu">Menu</div>
 		</header>
@@ -77,7 +81,7 @@
 		</div>
 
 		<!-- Base Category menu -->
-		<div class="category-grid" data-bind="visible: !selectedCategoryBoolean(), foreach: categories">
+		<div class="category-grid" data-bind="visible: !selectedCategoryBoolean() && !contactViewBoolean(), foreach: categories">
 			<a class="category-grid-item" data-bind="attr: {href: '#' + id()}">
 				<div>
 					<div class="thumbnail-container">
@@ -165,6 +169,15 @@
 						</picture>
 					</div>
 				</a>
+			</div>
+		</div>
+
+		<!-- Contact view -->
+		<div data-bind="visible: contactViewBoolean">
+			<div class="category-title">Contact</div>
+			<div class="contact-info">
+				<div>Email: alisonreed@college.harvard.edu</div>
+				<div>Phone: (718) 915-3122</div>
 			</div>
 		</div>
 	</div>

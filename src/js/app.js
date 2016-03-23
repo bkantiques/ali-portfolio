@@ -67,6 +67,7 @@ $(document).ready(function() {
 
 		self.categories = new ko.observableArray();
 
+		self.contactViewBoolean = new ko.observable(false);
 
 		this.mobileMenuVisible = new ko.observable(false);
 
@@ -146,6 +147,8 @@ $(document).ready(function() {
 		self.clearSelections = function() {
 			self.selectedPortfolioItem(null);
 			self.selectedCategory(null);
+
+			self.contactViewBoolean(false);
 		};
 
 		self.initialize = function(categories) {
@@ -255,17 +258,23 @@ $(document).ready(function() {
 
 			    var categoryId = this.params.categoryId.toLowerCase();
 
-		    	// If not the current category
-		    	if(!(self.selectedCategory() && self.selectedCategory().id() && self.selectedCategory().id() == categoryId)) {
-		    		// Clear selections
-		    		self.clearSelections();
+			    if(categoryId === 'contact') {
+			    	self.clearSelections();
+			    	self.contactViewBoolean(true);
+			    }
+			    else {
+			    	// If not the current category
+			    	if(!(self.selectedCategory() && self.selectedCategory().id() && self.selectedCategory().id() == categoryId)) {
+			    		// Clear selections
+			    		self.clearSelections();
 
-		    		// Find portfolio item where link matches title link
-			    	self.setCategoryById(categoryId);
-		    	}
-		    	else {
-		    		// If current category, clear selected portfolio item
-		    		self.selectedPortfolioItem(null);
+			    		// Find portfolio item where link matches title link
+				    	self.setCategoryById(categoryId);
+			    	}
+			    	else {
+			    		// If current category, clear selected portfolio item
+			    		self.selectedPortfolioItem(null);
+			    	}
 		    	}
 
 		    });
