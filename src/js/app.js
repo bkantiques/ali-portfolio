@@ -232,7 +232,8 @@ $(document).ready(function() {
 
 			// If found item, scroll to top
 			if(itemFound) {
-				$('body').scrollTop(0);
+				var $header = $('header');
+				$('html, body').animate({scrollTop: ($header.offset().top + $header.height()) + 'px' });
 			}
 
 			return itemFound;
