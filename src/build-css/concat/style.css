@@ -26,6 +26,9 @@ a {
   color: black;
   text-decoration: none; }
 
+button {
+  outline: none; }
+
 .main {
   padding: 65px;
   padding-top: 40px; }
@@ -181,15 +184,15 @@ nav {
         -ms-flex-direction: column;
             flex-direction: column;
     text-align: center;
-    height: 144px;
-    -webkit-transition: height 1s;
-            transition: height 1s;
+    max-height: 200px;
+    -webkit-transition: max-height 1s;
+            transition: max-height 1s;
     overflow: hidden; }
 
   .nav-mobile-hidden {
-    height: 0;
-    -webkit-transition: height 1s;
-            transition: height 1s; }
+    max-height: 0;
+    -webkit-transition: max-height 1s;
+            transition: max-height 1s; }
 
   .menu-expander {
     display: block;
@@ -202,3 +205,11 @@ nav {
 .contact-info {
   clear: both;
   padding-top: 20px; }
+
+.subcategory-instructions {
+  text-align: center;
+  margin-bottom: 20px; }
+
+@media screen and (min-width: 391px) {
+  .visible-max-390 {
+    display: none; } }

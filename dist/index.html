@@ -112,6 +112,7 @@
 		<div data-bind="with: selectedCategory">
 
 			<!-- Subcategories -->
+			<div class="subcategory-instructions" data-bind="visible: subcategories().length">Click thumbnails to see more</div>
 			<div class="category-grid" data-bind="foreach: subcategories">
 				<a class="category-grid-item" data-bind="attr: {href: '#' + id()}">
 					<div>
@@ -176,7 +177,7 @@
 		<div data-bind="visible: contactViewBoolean">
 			<div class="category-title">Contact</div>
 			<div class="contact-info">
-				<div>Email: alisonreed@college.harvard.edu</div>
+				<div>Email:<br class="visible-max-390"> alisonreed<br class="visible-max-390">@college.harvard.edu</div>
 				<div>Phone: (718) 915-3122</div>
 			</div>
 		</div>

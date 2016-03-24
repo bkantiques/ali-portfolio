@@ -564,10 +564,10 @@ var categories = [
 						title: 'Silver Flowers 2'
 					},
 					{
-						title: 'Flower Pendant'
+						title: 'Enamel Pendants'
 					},
 					{
-						title: 'Enamel Pendants'
+						title: 'Flower Pendant'
 					}
 				],
 				videos: [],
