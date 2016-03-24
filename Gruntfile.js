@@ -169,7 +169,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // 4. Register tasks
-    grunt.registerTask('images', ['responsive_images', 'imagemin']);
+    grunt.registerTask('images', ['responsive_images', 'newer:imagemin']);
     grunt.registerTask('watchSync', ['browserSync', 'watch']);
     grunt.registerTask('build', ['sass', 'autoprefixer', 'concat', 'cssmin', 'uglify', 'processhtml']);
 
