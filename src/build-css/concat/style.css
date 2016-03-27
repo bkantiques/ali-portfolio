@@ -141,7 +141,11 @@ img {
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 50px; }
+  font-size: 50px;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none; }
 
 .video-wrapper {
   position: relative;
