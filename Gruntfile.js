@@ -81,6 +81,12 @@ module.exports = function(grunt) {
                     cwd: 'src/build-images/sizes/',
                     src: ['**/*.jpg'],
                     dest: 'src/images'
+                },
+                {
+                    expand: true,
+                    cwd: 'src/build-images/sizes/',
+                    src: ['**/*.jpg'],
+                    dest: 'dist/images'
                 }]
             }
 
@@ -139,7 +145,7 @@ module.exports = function(grunt) {
         },
 
         cssmin: {
-            // Minifies concatenated css and pputs in dist folder
+            // Minifies concatenated css and puts in dist folder
             build: {
                 files: {
                     'dist/css/style.min.css': 'src/build-css/concat/style.css'
