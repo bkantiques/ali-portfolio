@@ -141,7 +141,8 @@ img {
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 50px; }
+  font-size: 50px;
+  padding: 1px 6px; }
 
 .video-wrapper {
   position: relative;
