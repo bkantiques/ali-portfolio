@@ -88,10 +88,16 @@ var categories = [
 				title: 'Kausalya'
 			},
 			{
+				title: 'Fall from Ivory Tower'
+			},
+			{
 				title: 'Figure Painting 1'
 			},
 			{
 				title: 'Figure Painting 2'
+			},
+			{
+				title: 'Red and Green'
 			},
 			{
 				title: 'Portrait'
@@ -346,6 +352,12 @@ var categories = [
 						},
 						{
 							title: 'Ratchberts 2'
+						},
+						{
+							title: 'Jonathan'
+						},
+						{
+							title: 'Jonathan in Progress'
 						},
 						{
 							title: 'Shelley'
