@@ -97,7 +97,7 @@ var categories = [
 				title: 'Figure Painting 2'
 			},
 			{
-				title: 'Red and Green'
+				title: 'Red and Green All Over'
 			},
 			{
 				title: 'Portrait'
