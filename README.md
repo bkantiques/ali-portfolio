@@ -5,4 +5,4 @@ A live version can be viewed at [http://alisonreedart.com].
 
 ## Installation and Running
 
-Clone the repository and run `npm install`. The grunt-responsive-images tool requires [ImageMagick](https://www.imagemagick.org/script/index.php) to be installed. Once ImageMagick is set up, run `grunt images` to process the images, then `grunt build`. To run a local server use `grunt watvhSync`. 
+Clone the repository and run `npm install`. The grunt-responsive-images tool requires [ImageMagick](https://www.imagemagick.org/script/index.php) to be installed. Once ImageMagick is set up, run `grunt images` to process the images, then `grunt build`. To run a local server use `grunt watchSync`. 
