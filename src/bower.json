@@ -1,0 +1,23 @@
+{
+  "name": "src",
+  "homepage": "https://github.com/jasonreed7/ali-portfolio",
+  "authors": [
+    "jasonreed7 <jreed0719@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "~3.4.0",
+    "sammy": "~0.7.6",
+    "canonical.css": "~1.1.1"
+  }
+}
