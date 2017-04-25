@@ -12,6 +12,6 @@ bower install
 cd ..
 ```
 
-Next download the images. They are available on [Google Drive](https://drive.google.com/open?id=0B4-nN5EW3SkYWDgzTmJqQm1IVGM). Place the `original-images` folder inside `src/build-images/` so you end up having the folders structured `src/build-images/original-images/`.
+Next download the images. They are available on [Google Drive](https://drive.google.com/open?id=0B4-nN5EW3SkYWDgzTmJqQm1IVGM). Place the `original-images` folder inside `src/build-images/` so you end up having the folders structured `src/build-images/original-images/`. Put the `gifs` folder inside `src/` so you get `src/gifs/`.
 
 The grunt-responsive-images tool requires [ImageMagick](https://www.imagemagick.org/script/index.php) to be installed. Once ImageMagick is set up, run `grunt images` to process the images, then `grunt build`. To run a local server use `grunt watchSync`. 
