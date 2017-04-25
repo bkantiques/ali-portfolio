@@ -6,6 +6,7 @@ src/bower_components/
 src/css/
 src/images/**
 src/build-css/**
+!src/build-css/sass/
 !src/build-css/sass/**
 src/build-images/
 src/js/concat/
