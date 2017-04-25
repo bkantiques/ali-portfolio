@@ -13,6 +13,7 @@ $(document).ready(function() {
 		this.subcategories = new ko.observableArray();
 		this.videos = new ko.observableArray();
 		this.images = new ko.observableArray();
+		this.gifs = new ko.observableArray();
 
 		this.selectedImageIndex = new ko.observable();
 
@@ -31,6 +32,10 @@ $(document).ready(function() {
 			thisCategory.images.push(new PortfolioImage(image));
 		});
 
+		category.gifs.forEach(function(gif) {
+			thisCategory.gifs.push(new PortfolioGif(gif));
+		});
+		
 		// Category id
 		this.id = new ko.computed(function() {
 			return this.title().toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ /g, '-');
@@ -60,6 +65,10 @@ $(document).ready(function() {
 		return video;
 	}
 
+	function PortfolioGif(item) {
+		var gif = new PortfolioItem(item);
+		return gif;
+	}
 
 	function ViewModel(categories) {
 

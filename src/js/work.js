@@ -12,6 +12,29 @@ var categories = [
 				youtubeId: 'mvVFWN4fXDo'
 			}
 		],
+		gifs: [
+			{
+				title: 'Elephant 1'
+			},
+			{
+				title: 'Elephant 2'
+			}
+		],
+		subcategories: []
+	},
+	{
+		title: 'Live Action Film',
+		thumbnail: 'live-action-film/entanglement-thumbnail.jpg',
+		parentLink: '',
+		path: 'live-action-film',
+		images: [],
+		videos: [
+			{
+				title: 'Entanglement',
+				youtubeId: 'Mv7hIr_c0ck'
+			}
+		],
+		gifs: [],
 		subcategories: []
 	},
 	{
@@ -37,6 +60,9 @@ var categories = [
 			},
 			{
 				title: 'Moose'
+			},
+			{
+				title: 'Figure Drawing'
 			},
 			{
 				title: 'Ostrich'
@@ -76,6 +102,7 @@ var categories = [
 			}
 		],
 		videos: [],
+		gifs: [],
 		subcategories: []
 	},
 	{
@@ -97,6 +124,18 @@ var categories = [
 				title: 'Figure Painting 2'
 			},
 			{
+				title: 'Authors Dancing'
+			},
+			{
+				title: 'Authors Dancing In Progress 1'
+			},
+			{
+				title: 'Authors Dancing In Progress 2'
+			},
+			{
+				title: 'Authors Dancing In Progress 3'
+			},
+			{
 				title: 'Red and Green All Over'
 			},
 			{
@@ -105,6 +144,7 @@ var categories = [
 
 		],
 		videos: [],
+		gifs: [],
 		subcategories: []
 	},
 	{
@@ -114,6 +154,7 @@ var categories = [
 		path: 'sets',
 		images: [],
 		videos: [],
+		gifs: [],
 		subcategories: [{
 			title: 'References to Salvador Dali Make Me Hot',
 			thumbnail: 'sets/references/references-to-salvador-dali-make-me-hot-1.jpg',
@@ -152,6 +193,7 @@ var categories = [
 				}
 			],
 			videos: [],
+			gifs: [],
 			subcategories: []
 		},
 		{
@@ -174,6 +216,7 @@ var categories = [
 				}
 			],
 			videos: [],
+			gifs: [],
 			subcategories: []
 		},
 		{
@@ -184,9 +227,13 @@ var categories = [
 			images: [
 				{
 					title: 'Exist 1'
+				},
+				{
+					title: 'Exist 2'
 				}
 			],
 			videos: [],
+			gifs: [],
 			subcategories: []
 		},
 		{
@@ -203,6 +250,7 @@ var categories = [
 				}
 			],
 			videos: [],
+			gifs: [],
 			subcategories: []
 		},
 		{
@@ -216,9 +264,25 @@ var categories = [
 				},
 				{
 					title: 'Concept Sketch Eggscape'
+				},
+				{
+					title: 'Egg Set'
+				},
+				{
+					title: 'Egg Set In Progress 1'
+				},
+				{
+					title: 'Egg Set In Progress 2'
+				},
+				{
+					title: 'Egg Set In Progress 3'
+				},
+				{
+					title: 'Egg Set In Progress 4'
 				}
 			],
 			videos: [],
+			gifs: [],
 			subcategories: []
 		}]
 	},
@@ -229,6 +293,7 @@ var categories = [
 		path: 'illustration',
 		images: [],
 		videos: [],
+		gifs: [],
 		subcategories: [{
 			title: 'Cards',
 			thumbnail: 'illustration/cards/strawberry-thieves/strawberry-thieves-1.jpg',
@@ -236,11 +301,12 @@ var categories = [
 			path: 'illustration/cards',
 			images: [],
 			videos: [],
+			gifs: [],
 			subcategories: [
 				{
 					title: 'Strawberry Thieves',
 					thumbnail: 'illustration/cards/strawberry-thieves/strawberry-thieves-1.jpg',
-					parentLink: 'illustration/cards',
+					parentLink: 'cards',
 					path: 'illustration/cards/strawberry-thieves',
 					images: [
 						{
@@ -263,12 +329,13 @@ var categories = [
 						}
 					],
 					videos: [],
+					gifs: [],
 					subcategories: []
 				},
 				{
 					title: 'Tierpark',
 					thumbnail: 'illustration/cards/tierpark/cover.jpg',
-					parentLink: 'illustration/cards',
+					parentLink: 'cards',
 					path: 'illustration/cards/tierpark',
 					images: [
 						{
@@ -333,25 +400,35 @@ var categories = [
 						}
 					],
 					videos: [],
+					gifs: [],
 					subcategories: []
 				},
 				{
 					title: 'Birthday',
 					thumbnail: 'illustration/cards/birthday/hannah.jpg',
-					parentLink: 'illustration/cards',
+					parentLink: 'cards',
 					path: 'illustration/cards/birthday',
 					images: [
 						{
+							title: 'Ulrich'
+						},
+						{
+							title: 'Pfister'
+						},
+						{ 
+							title: 'Sand'
+						},
+						{
 							title: 'Alex'
+						},
+						{
+							title: 'Alex 2'
 						},
 						{
 							title: 'Hannah'
 						},
 						{
-							title: 'Ratchberts 1'
-						},
-						{
-							title: 'Ratchberts 2'
+							title: 'Ellie'
 						},
 						{
 							title: 'Jonathan'
@@ -360,10 +437,23 @@ var categories = [
 							title: 'Jonathan in Progress'
 						},
 						{
+							title: 'Ratchberts 1'
+						},
+						{
+							title: 'Ratchberts 2'
+						},
+						{
+							title: 'Nerds'
+						},
+						{
+							title: 'Rosh Hashanah'
+						},
+						{
 							title: 'Shelley'
 						}
 					],
 					videos: [],
+					gifs: [],
 					subcategories: []
 				}
 			]},
@@ -378,9 +468,45 @@ var categories = [
 					},
 					{
 						title: 'Do You Believe in Magic'
+					},
+					{
+						title: 'Suits'
+					},
+					{
+						title: 'Emily'
+					},
+					{
+						title: 'Emily Interview'
+					},
+					{
+						title: 'Pinata'
+					},
+					{
+						title: 'Emily 1'
+					},
+					{
+						title: 'Living Room'
 					}
 				],
 				videos: [],
+				gifs: [],
+				subcategories: []
+			},
+			{
+				title: 'Miscellaneous Illustration',
+				thumbnail: 'illustration/miscellaneous-illustration/vitorio-label-mockups.jpg',
+				parentLink: 'illustration',
+				path: 'illustration/miscellaneous-illustration',
+				images: [
+					{
+						title: 'Vitorio Label Mockups'
+					},
+					{
+						title: 'Post Its'
+					}
+				],
+				videos: [],
+				gifs: [],
 				subcategories: []
 			}
 		]
@@ -392,6 +518,7 @@ var categories = [
 		path: 'miscellaneous',
 		images: [],
 		videos: [],
+		gifs: [],
 		subcategories: [
 			{
 				title: 'Models',
@@ -400,10 +527,31 @@ var categories = [
 				path: 'miscellaneous/models',
 				images: [
 					{
-						title: '9th Grade Elizabethan Model 1'
+						title: 'Elephant Puppet Powdered'
 					},
 					{
-						title: '9th Grade Elizabethan Model 2'
+						title: 'Elephant Puppet In Progress 1'
+					},
+					{
+						title: 'Elephant Puppet In Progress 2'
+					},
+					{
+						title: 'Elephant Puppet In Progress 3'
+					},
+					{
+						title: 'Elephant Puppet In Progress 4'
+					},
+					{
+						title: 'Elephant Puppet In Progress 5'
+					},
+					{
+						title: 'Moishe with Coat'
+					},
+					{
+						title: 'Moishe with Vest'
+					},
+					{
+						title: 'Moishe with Clothes'
 					},
 					{
 						title: 'Moishe in Progress 1'
@@ -412,16 +560,42 @@ var categories = [
 						title: 'Moishe in Progress 2'
 					},
 					{
-						title: 'Moishe with Clothes'
+						title: 'Pysanky 1'
 					},
 					{
-						title: 'Moishe with Vest'
+						title: 'Pysanky 2'
 					},
 					{
-						title: 'Moishe with Coat'
+						title: 'Pysanky 3'
+					},
+					{
+						title: 'Pysanky 4'
+					},
+					{
+						title: 'Elephant Mold 1'
+					},
+					{
+						title: 'Elephant Mold 2'
+					},
+					{
+						title: 'Elephant Mold 3'
+					},
+					{
+						title: 'Elephant Mold 4'
+					},
+					{
+						title: 'Elephant Mold 5'
+					},
+					{
+						title: '9th Grade Elizabethan Model 1'
+					},
+					{
+						title: '9th Grade Elizabethan Model 2'
 					}
+
 				],
 				videos: [],
+				gifs: [],
 				subcategories: []
 			},
 			{
@@ -444,6 +618,7 @@ var categories = [
 					}
 				],
 				videos: [],
+				gifs: [],
 				subcategories: []
 			},
 			{
@@ -459,10 +634,26 @@ var categories = [
 						title: 'Chair 2'
 					},
 					{
+						title: 'Headless Mountain Goat 1'
+					},
+					{
+						title: 'Headless Mountain Goat 2'
+					},
+					{
+						title: 'Mountain Goat'
+					},
+					{
+						title: 'Emily Goat Top View'
+					},
+					{
+						title: 'Emily Goat Side View'
+					},
+					{
 						title: 'Bread Basket'
 					}
 				],
 				videos: [],
+				gifs: [],
 				subcategories: []
 			},
 			{
@@ -491,6 +682,7 @@ var categories = [
 					}
 				],
 				videos: [],
+				gifs: [],
 				subcategories: []
 			},
 			{
@@ -504,6 +696,7 @@ var categories = [
 					}
 				],
 				videos: [],
+				gifs: [],
 				subcategories: []
 			},
 		]

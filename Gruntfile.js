@@ -168,14 +168,23 @@ module.exports = function(grunt) {
                     'dist/index.html': 'src/index.html'
                 }
             }
-        }
+        },
+
+        copy: {
+            gifs: {
+                expand: true,
+                cwd: 'src/gifs/',
+                src: '**',
+                dest: 'dist/gifs/',
+            },
+        },
 
     });
 
     require('load-grunt-tasks')(grunt);
 
     // 4. Register tasks
-    grunt.registerTask('images', ['responsive_images', 'newer:imagemin']);
+    grunt.registerTask('images', ['responsive_images', 'newer:imagemin', 'copy']);
     grunt.registerTask('watchSync', ['browserSync', 'watch']);
     grunt.registerTask('build', ['sass', 'autoprefixer', 'concat', 'cssmin', 'uglify', 'processhtml']);
 

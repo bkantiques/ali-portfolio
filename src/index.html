@@ -143,6 +143,13 @@
 				</a>
 			</div>
 
+			<!-- Gifs -->
+			<div class="image-grid" data-bind="foreach: gifs">
+				<div class="image-grid-item">
+					<img data-bind="attr: {src: 'gifs/' + $parent.path() + '/' + id() + '.gif'}">
+				</div>
+			</div>
+			
 			<!-- Videos -->
 			<div data-bind="foreach: videos">
 				<div class="video-wrapper">
