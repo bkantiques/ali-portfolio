@@ -8,6 +8,10 @@ var categories = [
 		images: [],
 		videos: [
 			{
+				title: 'Tread Lightly',
+				youtubeId: 'M6DVN-kwCDg'
+			},
+			{
 				title: 'Animation Reel',
 				youtubeId: 'mvVFWN4fXDo'
 			}
@@ -18,6 +22,9 @@ var categories = [
 			},
 			{
 				title: 'Elephant 2'
+			},
+			{
+				title: 'Elephant 3'
 			}
 		],
 		subcategories: []
@@ -415,7 +422,7 @@ var categories = [
 						{
 							title: 'Pfister'
 						},
-						{ 
+						{
 							title: 'Sand'
 						},
 						{
